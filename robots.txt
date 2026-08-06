@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://curadomagazine.com/sitemap.xml
