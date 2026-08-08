@@ -32,78 +32,82 @@
 				  elm.innerHTML = '<p>No Results Found</p>';
 				}
 			  })();</script></div></main><footer class="footer"><a class="logo" href="https://curadomagazine.com/"><img src="https://curadomagazine.com/media/website/curado-logo-600.png" alt="CURADO MAGAZINE" width="600" height="244"></a><nav class="footer__nav"><ul><li><a href="https://curadomagazine.com/acerca/" class="inverse" target="_self">Acerca</a></li><li><a href="https://curadomagazine.com/contacto/" class="inverse" target="_self">Contacto</a></li><li><a href="https://curadomagazine.com/creditos-y-retiros/" class="inverse" target="_self">Créditos</a></li></ul></nav><div class="footer__social"><a href="https://instagram.com/curadomagazine" class="instagram" aria-label="Instagram"><svg class="icon"><use xlink:href="https://curadomagazine.com/assets/svg/svg-map.svg#instagram"/></svg></a></div><div class="footer__copyright">© 2026 CURADO MAGAZINE. Compartimos trabajo de artistas y fotógrafos con crédito. Si eres autor de una obra publicada y quieres una corrección o retiro, escríbenos.</div></footer></div><div class="search"><div class="search__overlay"><button class="search__close" aria-label="Close">Close</button><form action="https://curadomagazine.com/search.html" class="search__form"><input class="search__input" type="search" name="q" placeholder="Buscar" aria-label="Buscar" autofocus required> <button type="submit" class="search__button"><span>Buscar</span></button></form></div></div><script>window.publiiThemeMenuConfig={mobileMenuMode:'overlay',animationSpeed:300,submenuWidth:'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar',};</script><script defer="defer" src="https://curadomagazine.com/assets/js/scripts.min.js?v&#x3D;b103b2211e74472ffa1a0d35c0918ecc"></script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script><div id="curado-search"><button id="curado-search-close" aria-label="Cerrar">&times;</button> <input id="curado-search-input" type="text" placeholder="Buscar" autocomplete="off"><div id="curado-search-results"></div></div><script>(function () {
-  var overlay = document.getElementById('curado-search');
-  var input   = document.getElementById('curado-search-input');
-  var results = document.getElementById('curado-search-results');
-  var closeBtn= document.getElementById('curado-search-close');
-  var data    = null;
-  var loading = false;
+  function init() {
+    var overlay = document.getElementById('curado-search');
+    var input   = document.getElementById('curado-search-input');
+    var results = document.getElementById('curado-search-results');
+    var closeBtn= document.getElementById('curado-search-close');
+    if (!overlay) return;
 
-  function open() {
-    overlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(function(){ input.focus(); }, 60);
-    if (!data && !loading) {
-      loading = true;
-      fetch('/feed.json')
-        .then(function(r){ return r.json(); })
-        .then(function(j){ data = j.items || []; loading = false; render(input.value); })
-        .catch(function(){ loading = false; });
-    }
-  }
+    var data = null, loading = false;
 
-  function close() {
-    overlay.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  function strip(s) {
-    return (s || '')
-      .replace(/<[^>]*>/g, ' ')
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase();
-  }
-
-  function render(q) {
-    var term = strip(q).trim();
-    if (!term) { results.innerHTML = ''; return; }
-    if (!data) { results.innerHTML = '<p class="cs-msg">Cargando…</p>'; return; }
-
-    var hits = data.map(function (it) {
-      var title = strip(it.title);
-      var body  = strip(it.content_html);
-      var score = 0;
-      if (title.indexOf(term) !== -1) score += 10;
-      if (body.indexOf(term) !== -1) score += 1;
-      return { item: it, score: score };
-    }).filter(function (h) { return h.score > 0; })
-      .sort(function (a, b) { return b.score - a.score; });
-
-    if (!hits.length) {
-      results.innerHTML = '<p class="cs-msg">Sin resultados</p>';
-      return;
+    function open(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); }
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function(){ input.focus(); }, 60);
+      if (!data && !loading) {
+        loading = true;
+        fetch('/feed.json')
+          .then(function(r){ return r.json(); })
+          .then(function(j){ data = j.items || []; loading = false; render(input.value); })
+          .catch(function(){ loading = false; });
+      }
+      return false;
     }
 
-    results.innerHTML = hits.map(function (h) {
-      var it = h.item;
-      var img = it.image ? '<img src="' + it.image + '" alt="">' : '';
-      return '<a class="cs-hit" href="' + it.url + '">' + img +
-             '<span>' + it.title + '</span></a>';
-    }).join('');
+    function close() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function strip(s) {
+      return (s || '').replace(/<[^>]*>/g, ' ')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function render(q) {
+      var term = strip(q).trim();
+      if (!term) { results.innerHTML = ''; return; }
+      if (!data) { results.innerHTML = '<p class="cs-msg">Cargando…</p>'; return; }
+      var hits = data.map(function (it) {
+        var score = 0;
+        if (strip(it.title).indexOf(term) !== -1) score += 10;
+        if (strip(it.content_html).indexOf(term) !== -1) score += 1;
+        return { item: it, score: score };
+      }).filter(function (h) { return h.score > 0; })
+        .sort(function (a, b) { return b.score - a.score; });
+      if (!hits.length) { results.innerHTML = '<p class="cs-msg">Sin resultados</p>'; return; }
+      results.innerHTML = hits.map(function (h) {
+        var it = h.item;
+        var img = it.image ? '<img src="' + it.image + '" alt="">' : '';
+        return '<a class="cs-hit" href="' + it.url + '">' + img + '<span>' + it.title + '</span></a>';
+      }).join('');
+    }
+
+    // Clona el botón para quitarle los listeners del tema
+    var oldBtn = document.querySelector('.search-btn');
+    if (oldBtn) {
+      var newBtn = oldBtn.cloneNode(true);
+      oldBtn.parentNode.replaceChild(newBtn, oldBtn);
+      newBtn.addEventListener('click', open);
+      newBtn.onclick = open;
+    }
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+    var t;
+    input.addEventListener('input', function () {
+      clearTimeout(t);
+      t = setTimeout(function(){ render(input.value); }, 120);
+    });
   }
 
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('.search-btn');
-    if (btn) { e.preventDefault(); e.stopPropagation(); open(); }
-  }, true);
-
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-
-  var t;
-  input.addEventListener('input', function () {
-    clearTimeout(t);
-    t = setTimeout(function(){ render(input.value); }, 120);
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 300); });
+  } else {
+    setTimeout(init, 300);
+  }
 })();</script></body></html>
