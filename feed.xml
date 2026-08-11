@@ -3,12 +3,58 @@
     <title>CURADO MAGAZINE</title>
     <link href="https://curadomagazine.com/feed.xml" rel="self" />
     <link href="https://curadomagazine.com" />
-    <updated>2026-08-10T18:20:29-06:00</updated>
+    <updated>2026-08-10T22:26:50-06:00</updated>
     <author>
         <name>Diego</name>
     </author>
     <id>https://curadomagazine.com</id>
 
+    <entry>
+        <title>Collection of Portals</title>
+        <author>
+            <name>Diego</name>
+        </author>
+        <link href="https://curadomagazine.com/daniel-barreto-collection-of-portals/"/>
+        <id>https://curadomagazine.com/daniel-barreto-collection-of-portals/</id>
+        <media:content url="https://curadomagazine.com/media/posts/10/curado-featured-barreto.jpg" medium="image" />
+            <category term="Técnica"/>
+            <category term="Obra"/>
+            <category term="Artista"/>
+
+        <updated>2026-08-10T22:23:36-06:00</updated>
+            <summary type="html">
+                <![CDATA[
+                        <img src="https://curadomagazine.com/media/posts/10/curado-featured-barreto.jpg" alt="Ilustración animada: un conejo blanco sentado en un campo dorado mira un portal luminoso de bordes irisados entre los árboles" />
+                    Un portal es una promesa de que existe otro lado. Eso es lo único que necesita&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://curadomagazine.com/media/posts/10/curado-featured-barreto.jpg" class="type:primaryImage" alt="Ilustración animada: un conejo blanco sentado en un campo dorado mira un portal luminoso de bordes irisados entre los árboles" /></p>
+                <div class="c-article">
+<p class="c-lead">Un portal es una promesa de que existe otro lado.</p>
+<p>Eso es lo único que necesita para funcionar. No importa qué haya allá, importa que creamos que hay algo. Un umbral es un acto de fe con forma de puerta.</p>
+<div class="c-loop"><video loading="lazy" width="300" height="150" src="/media/files/Collection%20of%20portals.mp4" autoplay="autoplay" loop="loop" muted="" playsinline=""></video></div>
+<p>Daniel Barreto, ilustrador tapatío, trabaja exactamente en ese punto. <em>Collection of Portals</em> son seis piezas breves, en bucle, donde una luz aparece en un paisaje y alguien la encuentra. Nadie fue a buscarla.</p>
+<p>Eso es lo primero que hay que entender de la serie: los portales no le pertenecen a nadie. Se abren donde toque, sin explicación, sin dueño y sin haber sido invocados. Le pasan a quien esté ahí.</p>
+<div class="c-loop-duo"><video width="300" height="150" src="/media/files/Collection%20of%20portals%20(1).mp4" autoplay="autoplay" loop="loop" muted="" playsinline=""></video> <video loading="lazy" width="300" height="150" src="/media/files/Collection%20of%20portals%20(2).mp4" autoplay="autoplay" loop="loop" muted="" playsinline=""></video></div>
+<p>Es una idea vieja y sigue siendo incómoda. Que lo extraordinario no premia mérito. Que no llega porque uno lo merezca ni porque haya hecho las cosas bien. Simplemente aparece, un día cualquiera, delante de quien no estaba esperando nada.</p>
+<p>Y como son loops, ese encuentro no avanza. Vuelve. Se repite. Está pasando ahora y va a seguir pasando cuando cierres la pestaña.</p>
+<div class="c-loop"><video loading="lazy" width="300" height="150" src="/media/files/Collection%20of%20portals%20(3).mp4" autoplay="autoplay" loop="loop" muted="" playsinline=""></video></div>
+<p>Ahí es donde Barreto toma su decisión más fuerte. Podría haber mostrado el otro lado. Tenía la técnica, tenía el mundo construido, no le habría costado nada. No lo hizo.</p>
+<div class="c-quote">Cruzar es siempre una pérdida disfrazada de descubrimiento</div>
+<p>Porque el umbral es el único momento en que todo sigue siendo posible. Antes de cruzar cabe cualquier cosa allá adentro: una ciudad, un mar, tu abuela, nada. Después ya solo cabe lo que había. Ganas una respuesta y pierdes todas las demás.</p>
+<div class="c-loop-out"><video loading="lazy" width="300" height="150" src="/media/files/Collection%20of%20portals%20(4).mp4" autoplay="autoplay" loop="loop" muted="" playsinline=""></video></div>
+<p>El dibujo entiende esto y opera igual. Está pintado como se recuerdan los sueños al despertar: grano de pastel, dos colores por pieza, contornos que no terminan de cerrar. Nada está definido del todo, y por eso todo puede ser todavía.</p>
+<p>Hay un linaje ahí, aunque Barreto no lo declare. El arte lleva un siglo desconfiando de los finales, desde los cuadros que se niegan a representar hasta las instalaciones que existen diez minutos y se apagan. Lo que cambia aquí es la escala. No hace falta un museo ni una detonación sobre un río. Bastan unos segundos.</p>
+<div class="c-loop"><video loading="lazy" width="300" height="150" src="/media/files/Collection%20of%20portals%20(5).mp4" autoplay="autoplay" loop="loop" muted="" playsinline=""></video></div>
+<p>Y eso es todo lo que la serie quiere darnos, que además es lo único que nadie puede darse solo: quedarse parado frente a algo que brilla, en el instante exacto en que todavía no sabemos qué es.</p>
+<p>Y no averiguarlo nunca.</p>
+<div class="c-credits">Obra: Daniel Barreto<br><em>Collection of Portals</em><br>Guadalajara, México</div>
+</div>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Una librería le pidió una página. La escribió en el cielo.</title>
         <author>
